@@ -5,6 +5,7 @@ import Footer from './components/Footer/footer'
 import Home from './components/Home/home'
 import Carousel from './components/Carousel/carousel'
 import Hero from './components/Hero/hero'
+import States from './components/LearningStates/States'
 
 const games = [
   {
@@ -60,7 +61,7 @@ const games = [
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       
       <main>
         <Carousel/>
@@ -69,7 +70,8 @@ function App() {
         <Hero title="Xbox Series X" banner="xbox-banner.jpeg" desc="The Xbox Series X is Microsoft’s most powerful gaming console, delivering stunning 4K gaming at up to 120 frames per second. With its custom SSD, it offers ultra-fast load times and seamless gameplay. Featuring 1TB of storage, ray tracing support, and backward compatibility with thousands of Xbox titles, the Series X is built for serious gamers who want top-tier performance and visuals."/>
       </main>
       
-      <Footer />
+      <Footer /> */}
+      <States/>
     </>
   )
 }

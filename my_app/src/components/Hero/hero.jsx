@@ -5,7 +5,7 @@ const Hero = ({ title, banner, desc }) => {
     <div className="container my-5 text-white">
       <div className="row align-items-center">
         <div className="col-lg-6 col-md-6 mb-4 mb-md-0">
-        <img src={`/${banner}`} alt={title} className="img-fluid rounded" />
+        <img src={`/${banner}`} alt={title} className="img-fluid rounded"  />
         </div>
         <div className="col-lg-6 col-md-6">
           <h2 className="mb-3">{title}</h2>
