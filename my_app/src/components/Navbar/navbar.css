@@ -1,41 +1,191 @@
+/* Base styling */
 .navbar {
-    background-color: #1e1e1e;
-    color: white;
-    padding: 0.8rem 2rem;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #36d677;
-  }
-  
+  background-color: #1e1e1e;
+  color: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand/logo styling */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #36d677;
+  gap: 0.5rem;
+  transition: transform 0.4s ease;
+  margin-right: auto;  /* This keeps it on the left */
+  margin-left: 20px;   /* ✅ Add spacing from the left */
+}
+
+
+.navbar-logo:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Simple pulse animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Links */
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-left: auto;  /* ✅ Push the links to the right */
+}
+
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0%;
+  background: #36d677;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: #36d677;
+}
+
+/* RIGHT: Nav links + hamburger */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+/* LEFT: Brand */
+.navbar-left {
+  margin-left: 20px;
+}
+
+
+/* Hamburger menu icon */
+.navbar-toggle {
+  display: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #2a2a2a;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  display: flex;
+  gap: 3rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown sections */
+.dropdown-section h4 {
+  color: #36d677;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-section a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.dropdown-section a:hover {
+  color: #36d677;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
   .navbar-links {
-    list-style: none;
-    display: flex;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: #1e1e1e;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 1rem 0;
     gap: 1.5rem;
-    margin: 0;
   }
-  
-  .navbar-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+
+  .navbar-links.active {
+    display: flex;
   }
-  
-  .navbar-links a:hover {
-    color: #36d677;
+
+  .navbar-toggle {
+    display: block;
   }
-  
+
+  .dropdown-content {
+    position: static;
+    flex-direction: column;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 1rem;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+}

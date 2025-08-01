@@ -9,6 +9,8 @@ const States = () => {
         // Initializes state value
          let [fruits, setFruits] =useState(["Mango","Pineapple","Guava"])
 
+         let [bulbStatus, setBulbStatus] =useState("ON")
+
 
 
          let age = 45;
@@ -39,6 +41,15 @@ const States = () => {
                 console.log(fruits)
             }
         }
+        function toggleBulb(){
+          if (bulbStatus == "ON") {
+            setBulbStatus("OFF")
+          } else {
+            setBulbStatus("ON")
+          }
+        }
+
+
 
 
   return (
@@ -51,8 +62,24 @@ const States = () => {
         <button onClick={increaseAge}>Increase Age</button>
       </div>
       <div>
-        
-        <button onClick={addFruit}>Add Fruit</button>
+      <input type="text" id='fruit' placeholder='Enter New Fruits' />
+      <button onClick={addFruit}>Add Fruit</button>
+      {
+        fruits.map((fruit,index)=>{
+          return (
+            <li>{fruit}</li>
+          )
+        }
+      )
+      }
+      </div>
+
+      <div>
+        {
+          bulbStatus == "ON" ? <h1>Bulb Is On</h1> : <h1>Bulb Is Off</h1>
+        }
+        <img src={bulbStatus == "ON" ? "on.jpg" : "off.jpg" } height={400} width={350} />
+        <button onClick={toggleBulb}>ON/OFF</button>
       </div>
 
     </>
