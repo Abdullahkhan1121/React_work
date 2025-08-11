@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import './App.css'
+import { useEffect, useState } from "react";
 import Navbar from './components/Navbar/navbar'
 import Footer from './components/Footer/footer'
 import Home from './components/Home/home'
@@ -7,6 +7,9 @@ import Carousel from './components/Carousel/carousel'
 import Hero from './components/Hero/hero'
 import States from './components/LearningStates/States'
 import Todo from './components/Todo/Todo'
+import Courses from './components/Courses/Courses'
+import axios from 'axios';
+import MyForm from './components/MyForm/MyForm';
 
 const games = [
   {
@@ -60,6 +63,49 @@ const games = [
 ]
 
 function App() {
+
+  let  [products, setProducts]=useState([])
+
+  // const getProd=async () =>{
+    
+  // }
+// async function   getProducts  (){
+  // Could be GET or POST/PUT/PATCH/DELETE
+// fetch('https://dummyjson.com/products?limit=100')
+// .then((res)=>{res.json()
+//   .then(data=>{
+//     console.log(data.products)
+//   setProducts(data.products);
+  
+//   })})
+
+// try {
+//   let response= await fetch("https://6895fd7e039a1a2b289119bf.mockapi.io/api/v1/courses")
+//   let data= await response.json();
+//   console.log(data)
+//   setProducts(data);
+  
+// } catch (error) {
+//   console.log(error);
+// }
+// }
+
+// useEffect(()=>{
+//   getProducts();
+// },[])
+
+
+// Want to use async/await? Add the `async` keyword to your outer function/method.
+async function getProducts() {
+  try {
+    const response = await axios.get("https://6895fd7e039a1a2b289119bf.mockapi.io/api/v1/courses");
+    setProducts(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
   return (
     <>
       {/* <Navbar />
@@ -73,7 +119,9 @@ function App() {
       
       <Footer /> */}
       {/* <States/> */}
-      <Todo/>
+      {/* <Todo/> */}
+      {/* <Courses courses={products}/> */}
+      <MyForm/>
     </>
   )
 }
