@@ -9,6 +9,7 @@ import States from './components/LearningStates/States'
 import Todo from './components/Todo/Todo'
 import Courses from './components/Courses/Courses'
 import axios from 'axios';
+import MultiStepForm from './components/MyForm/MultiStepForm';
 import MyForm from './components/MyForm/MyForm';
 
 const games = [
@@ -121,6 +122,7 @@ async function getProducts() {
       {/* <States/> */}
       {/* <Todo/> */}
       {/* <Courses courses={products}/> */}
+      {/* <MultiStepForm/> */}
       <MyForm/>
     </>
   )
