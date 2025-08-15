@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Todo = () => {
 
     let [todos,setTodos] = useState([]);
+    let TotalTodos =   todos.length //derived state
 
     const addTask = ()=>{
         let newTask = document.getElementById("task").value;
@@ -22,11 +23,18 @@ const Todo = () => {
         alert("Task Deleted")
     }
 
-    const editTask = (index)=>{
-       
-        alert("Task Updated")
-    }
-
+    const editTask = (index) => {
+        let updatedTask = prompt("Edit your task:", todos[index]);
+        if (updatedTask !== null && updatedTask.trim() !== "") {
+            let newTodos = [...todos];
+            newTodos[index] = updatedTask.trim();
+            setTodos(newTodos);
+            alert("Task Updated");
+        } else {
+            alert("Task not updated");
+        }
+    };
+    
   return (
     <>
 
@@ -39,8 +47,10 @@ const Todo = () => {
 
       <ul>
         <h3>showing Todo List</h3>
+        <h4>{TotalTodos}</h4>
         {
             todos.length > 0 ?
+            
             todos.map((task,index)=>{
                 return(<li key={index}>{task}
                 <button onClick={()=>{

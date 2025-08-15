@@ -11,6 +11,7 @@ import Courses from './components/Courses/Courses'
 import axios from 'axios';
 import MultiStepForm from './components/MyForm/MultiStepForm';
 import MyForm from './components/MyForm/MyForm';
+import UserLayout from './components/UserLayout/UserLayout';
 
 const games = [
   {
@@ -120,10 +121,13 @@ async function getProducts() {
       
       <Footer /> */}
       {/* <States/> */}
-      {/* <Todo/> */}
+     
       {/* <Courses courses={products}/> */}
       {/* <MultiStepForm/> */}
-      <MyForm/>
+      {/* <MyForm/> */}
+      <UserLayout>
+      <Todo/>
+      </UserLayout>
     </>
   )
 }
